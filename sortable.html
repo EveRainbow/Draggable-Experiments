@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="Sortable.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        .ui-widget-content { 
+            /*width: 150px; 
+            height: 150px; */
+            padding: 0.5em; }
+        div {
+            margin: 5px 0;
+        }
+        .btn {
+            margin: 0 10px;
+        }
+        /*************НИЖЕ ДЛЯ КОМПОНЕТА header****************************/
+        .carousel-item {
+            height: 65vh;
+            min-height: 350px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        /*************НИЖЕ ДЛЯ КОМПОНЕТА ourServices****************************/
+        .mb-60 {
+            margin-bottom: 60px;
+        }
+        .services-inner {
+            border: 2px solid #48c7ec;
+            margin-left: 35px;
+            transition: .3s;
+        }
+        .our-services-img {
+            float: left;
+            margin-left: -36px;
+            margin-right: 22px;
+            margin-top: 28px;
+        }
+        .our-services-text {
+            padding-right: 10px;
+        }
+        .our-services-text {
+            overflow: hidden;
+            padding: 28px 0 25px;
+        }
+        .our-services-text h4 {
+            color: #222222;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+            position: relative;
+            text-transform: uppercase;
+        }
+        .our-services-text h4::before {
+            background: #ec6d48 none repeat scroll 0 0;
+            bottom: 0;
+            content: "";
+            height: 1px;
+            position: absolute;
+            width: 35px;
+        }
+        .our-services-wrapper:hover .services-inner {
+            background: #fff none repeat scroll 0 0;
+            border: 2px solid transparent;
+            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+        .our-services-text p {
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 26px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        /*************НИЖЕ ДЛЯ КОМПОНЕТА whatWeDo****************************/
+        /**********************
+        /***** Services *******
+        /*********************/
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+        section{
+            padding: 60px 0;
+        }
+        section .section-title{
+            text-align:center;
+            color:#007b5e;
+            margin-bottom:50px;
+            text-transform:uppercase;
+        }
+        #what-we-do{
+            background:#ffffff;
+        }
+        #what-we-do .card{
+            padding: 1rem!important;
+            border: none;
+            margin-bottom:1rem;
+            -webkit-transition: .5s all ease;
+            -moz-transition: .5s all ease;
+            transition: .5s all ease;
+        }
+        #what-we-do .card:hover{
+            -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+            box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+        }
+        #what-we-do .card .card-block{
+            padding-left: 50px;
+            position: relative;
+        }
+        #what-we-do .card .card-block a{
+            color: #007b5e !important;
+            font-weight:700;
+            text-decoration:none;
+        }
+        #what-we-do .card .card-block a i{
+            display:none;
+            
+        }
+        #what-we-do .card:hover .card-block a i{
+            display:inline-block;
+            font-weight:700;
+            
+        }
+        #what-we-do .card .card-block:before{
+            font-family: FontAwesome;
+            position: absolute;
+            font-size: 39px;
+            color: #007b5e;
+            left: 0;
+            -webkit-transition: -webkit-transform .2s ease-in-out;
+            transition:transform .2s ease-in-out;
+        }
+        #what-we-do .card .block-1:before{
+            content: "\f0e7";
+        }
+        #what-we-do .card .block-2:before{
+            content: "\f0eb";
+        }
+        #what-we-do .card .block-3:before{
+            content: "\f00c";
+        }
+        #what-we-do .card .block-4:before{
+            content: "\f209";
+        }
+        #what-we-do .card .block-5:before{
+            content: "\f0a1";
+        }
+        #what-we-do .card .block-6:before{
+            content: "\f218";
+        }
+        #what-we-do .card:hover .card-block:before{
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);	
+            -webkit-transition: .5s all ease;
+            -moz-transition: .5s all ease;
+            transition: .5s all ease;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="contaner-fluid">
+        <div id="sortTrue" class="list-group">
+                <div id="draggable" class="ui-widget-content col-md-12" style="background: #673AB7;">
+                    <p>Drag me around</p>
+                </div>
+                <div class="ui-widget-content col-md-12" style="background: #CDDC39;">
+                    <p>Me too!</p>
+                </div>
+                <div class="ui-widget-content col-md-12" style="background: #c666d6;">
+                    <p>And me ^ __ ^</p>
+                </div>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-warning" w3-include-html="components/component-Boo" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ Boo!</button>
+            <button type="button" class="btn btn-warning" w3-include-html="components/component-headerComponent" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ header</button>
+            <button type="button" class="btn btn-warning" w3-include-html="components/component-ourServices" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ ourServices</button>
+            <button type="button" class="btn btn-warning" w3-include-html="components/component-whatWeDo" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ whatWeDo</button>
+        </div>
+    </div>
+</body>
+<script>
+        Sortable.create(sortTrue, {
+            group: "sorting",
+            sort: true
+        });
+    </script>
+
+<script>
+
+        function addComponent(event) {
+        
+        file = event.getAttribute("w3-include-html");
+        file = file + '.html'; 
+            
+        console.log(document.getElementsByTagName('div').length -1);
+        //file = 'content.html';
+        
+        function includeHTML() {
+        
+        xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  //if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  var emptyDiv = document.createElement("div");
+                  emptyDiv.innerHTML = this.responseText; 
+                  //$( emptyDiv).draggable();
+                  //$( emptyDiv ).resizable();
+                  if (this.status == 200) {
+                      document.getElementById('sortTrue').appendChild(emptyDiv);
+                      //document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = 				this.responseText; 
+
+                    }
+                  if (this.status == 404) {document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = "Page not found.";}
+                  /*remove the attribute, and call this function once more:*/
+                  //elmnt.removeAttribute("w3-include-html");
+                  //includeHTML();
+                }
+              }      
+              xhttp.open("GET", file, true);
+              xhttp.send();
+              /*exit the function:*/
+              return;
+            /*
+          var z, i, elmnt, file, xhttp;
+        
+          z = document.getElementsByTagName("*");
+          for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+        
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+        
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  //if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  var emptyDiv = document.createElement("div");
+                  if (this.status == 200) {
+                      document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = 				this.responseText; 
+                    document.getElementsByTagName('body')[document.getElementsByTagName('body').length -1].appendChild(emptyDiv);
+                    }
+                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+        
+                  elmnt.removeAttribute("w3-include-html");
+                  includeHTML();
+                }
+              }      
+              xhttp.open("GET", file, true);
+              xhttp.send();
+        
+              return;
+            }
+          }*/
+          
+        };
+        includeHTML();
+        console.log('works!');
+        /*$( function() {
+                $( "div" ).draggable();
+                $( "div" ).resizable()
+        } );*/
+        }
+        
+        
+        /*$.when( addComponent(event) ).done(function() {
+            $( function() {
+                $( "div" ).draggable();
+                $( "div" ).resizable()
+            } );
+        });*/
+
+        /*$('button').onclick(function() {
+            $( "div" ).draggable();
+            $( "div" ).resizable();
+        })*/
+
+        /*$('button').on('click', function() {
+            $( "div.ui-widget-content" ).draggable();
+            $( "div.ui-widget-content" ).resizable();
+        })*/
+        </script>
+        
+</html>
