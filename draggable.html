@@ -13,6 +13,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="bootstrap.min.js"></script>
+  <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script>
   $( function() {
     $( "div" ).draggable();
@@ -21,15 +22,15 @@
   </script>
 </head>
 <body>
-  <div class="container">
+  <div id="screen" class="container" style="border:1px solid lightgray">
     <div id="draggable" class="ui-widget-content" style="background: #673AB7;">
-      <p>Drag me around</p>
+      <p style="color:white;">Drag me around</p>
     </div>
     <div class="ui-widget-content" style="background: #CDDC39;">
         <p>Me too!</p>
     </div>
     <div class="ui-widget-content" style="background: #c666d6;">
-        <p>And me ^ __ ^</p>
+        <p style="color:white;">And me ^ __ ^</p>
     </div>
   </div>
 <script>
@@ -124,9 +125,18 @@
             $( "div.ui-widget-content" ).draggable();
             $( "div.ui-widget-content" ).resizable();
         })
+
+        function screenshot() {
+          html2canvas(document.getElementById('screen'), {
+            allowTaint: true}).then(function(canvas) {
+            document.body.appendChild(canvas);
+          });
+        }
+
         </script>
         
         <button w3-include-html="components/component-Boo" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ</button>
+        <button onclick="screenshot()">СДЕЛАТЬ СКРИНШОТ</button>
  
  
 </body>

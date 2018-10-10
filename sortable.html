@@ -10,6 +10,7 @@
     <script src="bootstrap.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
     <script src="Sortable.js"></script>
+    <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <style>
@@ -191,6 +192,7 @@
             <button type="button" class="btn btn-warning" w3-include-html="components/component-headerComponent" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ header</button>
             <button type="button" class="btn btn-warning" w3-include-html="components/component-ourServices" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ ourServices</button>
             <button type="button" class="btn btn-warning" w3-include-html="components/component-whatWeDo" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ whatWeDo</button>
+            <button type="button" class="btn btn-success" onclick="screenshot()">СДЕЛАТЬ СКРИНШОТ</button>
         </div>
     </div>
 </body>
@@ -294,6 +296,14 @@
             $( "div.ui-widget-content" ).draggable();
             $( "div.ui-widget-content" ).resizable();
         })*/
+
+        function screenshot() {
+          html2canvas(document.body, {
+            allowTaint: true}).then(function(canvas) {
+            document.body.appendChild(canvas);
+          });
+        }
+
         </script>
         
 </html>
