@@ -8,7 +8,16 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <link rel="stylesheet" href="bootstrap.css">
   <style>
-  .ui-widget-content { width: 150px; height: 150px; padding: 0.5em; }
+  .ui-widget-content { width: 150px; height: 150px; padding: 0.5em; position: relative;}
+  .tools {
+    width: 120%;
+    height: 50px;
+    background: #c3ced3;
+    position: absolute;
+    top: -65px;
+    z-index: 1000;
+    display: none;
+  }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -23,7 +32,8 @@
 </head>
 <body>
   <div id="screen" class="container" style="border:1px solid lightgray">
-    <div id="draggable" class="ui-widget-content" style="background: #673AB7;">
+    <div id="draggable" class="ui-widget-content" style="background: #673AB7;" onclick="tools(this)">
+      <div class="tools"></div>
       <p style="color:white;">Drag me around</p>
     </div>
     <div class="ui-widget-content" style="background: #CDDC39;">
@@ -53,8 +63,11 @@
                   //$( emptyDiv).draggable();
                   //$( emptyDiv ).resizable();
                   if (this.status == 200) {
-                      document.getElementsByTagName('body')[document.getElementsByTagName('body').length -1].appendChild(emptyDiv);
-                      document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = 				this.responseText; 
+                      //document.getElementsByTagName('body')[document.getElementsByTagName('body').length -1].appendChild(emptyDiv);
+                      //document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = 				this.responseText; 
+
+                    $('#screen').append(emptyDiv);
+                    $('#screen div:last').html(this.responseText);
 
                     }
                   if (this.status == 404) {document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = "Page not found.";}
@@ -100,8 +113,15 @@
           }*/
           
         };
-        includeHTML();
-        console.log('works!');
+        //includeHTML();
+
+        $.when(includeHTML()).then(setTimeout(function() {
+          console.log('when');
+          $( "div.ui-widget-content" ).draggable();
+          $( "div.ui-widget-content" ).resizable();
+        }, 500));
+
+        //console.log('works!');
         /*$( function() {
                 $( "div" ).draggable();
                 $( "div" ).resizable()
@@ -121,10 +141,10 @@
             $( "div" ).resizable();
         })*/
 
-        $('button').on('click', function() {
+        /*$('button').on('click', function() {
             $( "div.ui-widget-content" ).draggable();
-            $( "div.ui-widget-content" ).resizable(); 
-        })
+            $( "div.ui-widget-content" ).resizable();
+        })*/
 
         function screenshot() {
           html2canvas(document.getElementById('screen'), {
@@ -133,6 +153,18 @@
           });
         }
 
+
+        function tools (event) {
+          //$('.tools').show();
+          console.log(event);
+          $('.tools').show();
+        }
+
+        /*$.when(addComponent()).then(function() {
+          console.log('when');
+          $( "div.ui-widget-content" ).draggable();
+          $( "div.ui-widget-content" ).resizable();
+        });*/
         </script>
         
         <button w3-include-html="components/component-Boo" onclick="addComponent(this)">ДОБАВИТЬ КОМПОНЕНТ</button>
