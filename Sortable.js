@@ -15,7 +15,7 @@
 	}
 	else {
 		/* jshint sub:true */
-		window["Sortable"] = factory();
+		window["Sortable"] = factory(); 
 	}
 })(function sortableFactory() {
 	"use strict";
