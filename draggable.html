@@ -10,13 +10,20 @@
   <style>
   .ui-widget-content { width: 150px; height: 150px; padding: 0.5em; position: relative;}
   .tools {
-    width: 120%;
-    height: 50px;
-    background: #c3ced3;
+    width: 250px;
+    background: #c3ced3e6;
     position: absolute;
     top: -65px;
     z-index: 1000;
     display: none;
+    right: 0;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  input[type=color] {
+    width: 50px;
+    height: 50px;
   }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -29,11 +36,16 @@
     $( "div" ).resizable()
   } );
   </script>
+  <script src='spectrum.js'></script>
+  <link rel='stylesheet' href='spectrum.css' />
 </head>
 <body>
   <div id="screen" class="container" style="border:1px solid lightgray">
     <div id="draggable" class="ui-widget-content" style="background: #673AB7;" onclick="tools(this)">
-      <div class="tools"></div>
+      <div class="tools">
+        <p>ЦВЕТ ФОНА:</p>
+        <input type='color' name='color' />
+      </div>
       <p style="color:white;">Drag me around</p>
     </div>
     <div class="ui-widget-content" style="background: #CDDC39;">
@@ -66,8 +78,10 @@
                       //document.getElementsByTagName('body')[document.getElementsByTagName('body').length -1].appendChild(emptyDiv);
                       //document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = 				this.responseText; 
 
-                    $('#screen').append(emptyDiv);
-                    $('#screen div:last').html(this.responseText);
+                    //$('#screen').append(emptyDiv);
+                    //$('#screen div:last').html(this.responseText);
+
+                    $('#screen').append(this.responseText);
 
                     }
                   if (this.status == 404) {document.getElementsByTagName('div')[document.getElementsByTagName('div').length -1].innerHTML = "Page not found.";}
@@ -157,7 +171,12 @@
         function tools (event) {
           //$('.tools').show();
           console.log(event);
-          $('.tools').show();
+          $(event).find('.tools').show();
+          $(event).find('input').on('change', function() {
+            event.style.backgroundColor = $(event).find('input').val();
+            $(event).find('.tools').hide();
+          })
+
         }
 
         /*$.when(addComponent()).then(function() {
